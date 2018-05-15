@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+
+.jumbotron-fluid {
+  background: #EDF2F4;
+  padding: 100px 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+p {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 100;
+}
+a {
+    color: #c18934;
+}
+.title {
+  font-weight: 700;
+  text-align: center;
+}
+.page-title {
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+.streamer-info {
+  border-bottom: 2px solid black;
+  padding: 5px 0;
+}
+.stream-logo {
+  height: 50px;
+}
