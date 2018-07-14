@@ -21,7 +21,24 @@ a {
   color: white;
   font-weight: 700;
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
+}
+#sorting {
+  margin-bottom: -75px;
+}
+.status-btn {
+  background-color: hsl(270, 77%, 50%);
+  color: white;
+  width: 75px;
+  margin: 20px 0 30px 0;
+  outline: none;
+}
+.status-btn:focus {
+  outline: none;
+}
+.selected {
+  color: hsl(270, 77%, 50%);
+  background-color: white;
 }
 #streamer-list {
   background: white;

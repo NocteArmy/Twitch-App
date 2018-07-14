@@ -18,8 +18,13 @@
 
     <div class="jumbotron-fluid">
       <div class="container">
-        <div class="row justify-content-center page-title">
+        <div class="row justify-content-center">
           <h1 class="title">Twitch Streamers</h1>
+        </div>
+        <div id="sorting" class="row justify-content-center">
+          <button id="all" type="button" class="status-btn selected">All</button>
+          <button id="online" type="button" class="status-btn">Online</button>
+          <button id="offline" type="button" class="status-btn">Offline</button>
         </div>
         <div id="streamer-list"></div>
       </div>

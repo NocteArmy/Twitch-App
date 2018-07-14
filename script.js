@@ -31,15 +31,24 @@ $(document).ready(() => {
     }
   });
   $("#all").on('click', () => {
+    $("#all").addClass("selected");
+    $("#online").removeClass("selected");
+    $("#offline").removeClass("selected");
     $("#streamer-list").html("");
     streamersInfo.forEach((streamer) => $("#streamer-list").append(streamer[0]));
   });
   $("#online").on('click', () => {
+    $("#all").removeClass("selected");
+    $("#online").addClass("selected");
+    $("#offline").removeClass("selected");
     let onlineStreamers = streamersInfo.filter((streamer) => streamer[1]);
     $("#streamer-list").html("");
     onlineStreamers.forEach((streamer) => $("#streamer-list").append(streamer[0]));
   });
   $("#offline").on('click', () => {
+    $("#all").removeClass("selected");
+    $("#online").removeClass("selected");
+    $("#offline").addClass("selected");
     let offlineStreamers = streamersInfo.filter((streamer) => !streamer[1]);
     $("#streamer-list").html("");
     offlineStreamers.forEach((streamer) => $("#streamer-list").append(streamer[0]));
