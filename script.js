@@ -1,6 +1,7 @@
-var streamers = ['noctearmy', 'freecodecamp', 'beyondthesummit', 'bobross', 'esl_csgo', 'purgegamers', 'shroud', 'mrllamasc', 'joshog', 'drdisrespectlive'];
-
 $(document).ready(() => {
+  const streamers = ['noctearmy', 'freecodecamp', 'beyondthesummit', 'bobross', 'esl_csgo', 'purgegamers', 'shroud', 'mrllamasc', 'joshog', 'drdisrespectlive'];
+  var streamersInfo = [];
+  
   streamers.forEach((streamer) => {
     var streamInfo;
     $.when(getChannelInfo(), getStreamStatus()).done((channel, stream) => {
@@ -9,7 +10,8 @@ $(document).ready(() => {
       } else {
         streamInfo = '<div class="col-4"><em>offline</em></div>';
       }
-      $("#streamer-list").append('<div class="row streamer-info"><div class="col-4"><img src="' + channel[0].logo + '" class="stream-logo" title="' + streamer + ' logo" alt="' + streamer + ' logo"></div><div class="col-4"><a href="' + channel[0].url + '" target="_blank" rel="noopener">' + channel[0].display_name + '</a></div>' + streamInfo + '</div>');
+      streamersInfo.push(['<div class="row streamer-info justify-content-center align-items-center"><div class="col-2 col-lg-1"><img src="' + channel[0].logo + '" class="stream-logo" title="' + streamer + ' logo" alt="' + streamer + ' logo"></div><div class="col-3 col-lg-2"><a href="' + channel[0].url + '" target="_blank" rel="noopener">' + channel[0].display_name + '</a></div>' + streamInfo + '</div>', stream[0].stream]);
+      $("#streamer-list").append(streamersInfo[streamersInfo.length - 1][0]);
     });
     function getChannelInfo() {
       return $.ajax( {
@@ -28,5 +30,18 @@ $(document).ready(() => {
       });
     }
   });
-  
+  $("#all").on('click', () => {
+    $("#streamer-list").html("");
+    streamersInfo.forEach((streamer) => $("#streamer-list").append(streamer[0]));
+  });
+  $("#online").on('click', () => {
+    let onlineStreamers = streamersInfo.filter((streamer) => streamer[1]);
+    $("#streamer-list").html("");
+    onlineStreamers.forEach((streamer) => $("#streamer-list").append(streamer[0]));
+  });
+  $("#offline").on('click', () => {
+    let offlineStreamers = streamersInfo.filter((streamer) => !streamer[1]);
+    $("#streamer-list").html("");
+    offlineStreamers.forEach((streamer) => $("#streamer-list").append(streamer[0]));
+  });
 });
